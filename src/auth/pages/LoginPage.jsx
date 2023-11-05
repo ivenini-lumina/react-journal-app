@@ -10,12 +10,14 @@ import { useMemo } from "react";
 
 export const LoginPage = () => {
 
-  const { status, errorMessage } = useSelector( state => state.auth );
-
-  const { email, password, onInputChange } = useForm({
+  const formData = {
     email: '',
     password: '',
-  });
+  };
+
+  const { status, errorMessage } = useSelector( state => state.auth );
+
+  const { email, password, onInputChange } = useForm(formData);
 
   const isAuthenticating = useMemo( () => status === 'checking', [status] );
 
