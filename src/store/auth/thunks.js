@@ -2,7 +2,7 @@ import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, 
 import { clearNotesLogout } from "../journal";
 import { checkingCredentials, login, logout } from "./";
 
-export const checkingAuthentincation = ( email, password ) => {
+export const checkingAuthentincation = () => {
   return async ( dispatch ) => {
     dispatch ( checkingCredentials() );
   }
@@ -39,9 +39,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 
     dispatch ( checkingCredentials() );
 
-    console.log({ email, password });
     const result = await loginWithEmailPassword({ email, password });
-    console.log(result);
     const errorMessage = result.errorMessage;
 
     if ( !result.ok ){
